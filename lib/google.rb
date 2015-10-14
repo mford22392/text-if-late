@@ -33,6 +33,5 @@ class GoogleDirections
   end
 
 end
-binding.pry
-foo=7
+
 
