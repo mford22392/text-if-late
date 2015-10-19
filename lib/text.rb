@@ -1,6 +1,6 @@
 require_relative '../config/environment'
  
-class Twilio
+class Text
 
   attr_reader
 
