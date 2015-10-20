@@ -5,8 +5,13 @@ class GoogleDirectionsController
 
   def build_text
     directions_obj = build_data
-    binding.pry
     string = ""
+
+    
+    string << "Depart: #{directions_obj.depart_station} -- "
+    string << "Arrive: #{directions_obj.arrive_station} -- "
+    string << "Duration #{directions_obj.trip_length}"
+    string
     
   end
 
