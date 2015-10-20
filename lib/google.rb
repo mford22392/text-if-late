@@ -24,7 +24,6 @@ class GoogleDirections
   end
 
   def get_trip_time
-    binding.pry
     depart_time = doc.css('departure_time text').pop.text
     arrive_time = doc.css('arrival_time text').pop.text
     #Grabs LAST arrival and LAST depatrure time from XML.

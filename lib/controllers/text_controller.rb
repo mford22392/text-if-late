@@ -2,6 +2,17 @@ require_relative '../../config/environment.rb'
 require 'time'
 require 'pry'
 
+require 'rails'
+require 'net/https'
+require 'uri'
+require 'pry'
+require 'nokogiri'
+require 'time'
+require 'yaml'
+# require 'rubyrequires'
+require 'twilio-ruby'
+require 'require_all'
+
 
 # while true
 #   while Time.now > Time.parse('11:15am') && Time.now < Time.parse('11:20am')
@@ -14,4 +25,6 @@ require 'pry'
 #   end
 # end
 
-GoogleDirections.new.get_trip_data
+text_input = GoogleDirectionsController.new.build_text
+
+Text.new.send_text(text_input)
