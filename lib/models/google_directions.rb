@@ -2,16 +2,16 @@ class GoogleDirections
 
   attr_reader :doc, :trip_length, :depart_station, :arrive_station
 
-  def get_url
+  def get_url(alert) #pass it an alert object
     keys = YAML.load_file('application.yml')
-    origin = keys['ORIGIN']
-    destination = keys['DESTINATION']
+    origin = alert.origin
+    destination = alert.destination
     key = keys['KEYS']
     url="https://maps.googleapis.com/maps/api/directions/xml?origin=#{origin}&destination=#{destination}&mode=transit&key=#{key}"
   end
 
-  def get_doc
-    uri = URI.parse(get_url)
+  def get_doc(alert)
+    uri = URI.parse(get_url(alert))
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE

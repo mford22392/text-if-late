@@ -1,7 +1,7 @@
 class GoogleDirectionsController
 
-  def build_text
-    directions_obj = build_data
+  def build_text(alert)
+    directions_obj = build_data(alert)
     string = ""
 
     
@@ -12,9 +12,9 @@ class GoogleDirectionsController
     
   end
 
-  def build_data
+  def build_data(alert)
     directions = GoogleDirections.new.tap do |d|
-      d.get_doc
+      d.get_doc(alert)
       d.get_trip_time
       d.get_stations
     end
