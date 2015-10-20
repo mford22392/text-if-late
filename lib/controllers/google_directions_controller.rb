@@ -1,6 +1,3 @@
-require_relative '../../config/environment.rb'
-
-
 class GoogleDirectionsController
 
   def build_text

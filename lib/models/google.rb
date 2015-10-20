@@ -1,6 +1,3 @@
-require_relative '../config/environment.rb'
-
-
 class GoogleDirections
 
   attr_reader :doc, :trip_length, :depart_station, :arrive_station
