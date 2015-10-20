@@ -1,11 +1,8 @@
 require_relative 'config/environment'
 
-class App
+class App < Sinatra::Base
 
   def self.run
-    
-      
-      binding.pry
 
       Alert.all.each do |alert| 
         if alert.text_time == Time.now

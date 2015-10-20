@@ -1,0 +1,1 @@
+alert = Alert.create(origin: "11+Broadway+NY+NY", destination: "10+West+87th+Street+NY+NY", text_time: "")

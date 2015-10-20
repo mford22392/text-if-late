@@ -1,3 +1,5 @@
+require 'shotgun'
+
 require 'bundler'
 Bundler.require
 
@@ -20,6 +22,8 @@ require 'net/https'
 require 'uri'
 require 'time'
 require 'yaml'
+require_relative '../app.rb'
+
 
 require_all 'lib'
 
