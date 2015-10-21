@@ -21,11 +21,10 @@ class AlertController < Sinatra::Base
 
   post '/alerts/:id' do 
     @alert = Alert.find(params[:id])
-    @alert.origin = params["alert"]["origin"]
-    @alert.destination = params["alert"]["destination"]
+    @alert.origin = Geocoder.search(params["alert"]["origin"]).first.data["formatted_address"]
+    @alert.destination = Geocoder.search(params["alert"]["destination"]).first.data["formatted_address"]
     @alert.text_time = params["alert"]["text_time"].to_time
     @alert.save
-    binding.pry
     erb :'alerts/show.html'
   end
 
