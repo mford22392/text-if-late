@@ -1,0 +1,23 @@
+<form action="/alerts/<%=@alert.id%>" method="post">
+  <label> Origin: </label>
+    <p><input type="text" value = "<%=@alert.origin%>" name = "alert[origin]" /></p>
+  <label> Destination: </label>  
+    <p><input type="text" value = "<%= @alert.destination%>" name = "alert[destination]" /></p>
+  <label> Text Time: </label>  
+    <select name = "alert[text_time]">
+      <option value="6"> 6 </option>
+      <option value="6:30"> 6:30 </option>
+      <option value="7"> 7 </option>
+      <option value="7:30"> 7:30 </option>
+      <option value="8"> 8 </option>
+      <option value="8:30"> 8:30 </option>
+      <option value="9"> 9 </option>
+      <option value="9:30"> 9:30 </option>
+      <option value="10"> 10 </option>
+      <option value="10:30"> 10:30 </option>
+      <option value="11"> 11 </option>
+      <option value="11:30"> 11:30 </option>
+      <option value="12"> 12 </option>
+    </select>
+  <p><input type="submit" value = "Save Changes" />
+</form>

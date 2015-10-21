@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151020212449) do
+ActiveRecord::Schema.define(version: 20151021015200) do
 
   create_table "alerts", force: :cascade do |t|
-    t.string   "origin"
-    t.string   "destination"
-    t.datetime "text_time"
+    t.string "origin"
+    t.string "destination"
+    t.time   "text_time"
   end
 
   create_table "users", force: :cascade do |t|
