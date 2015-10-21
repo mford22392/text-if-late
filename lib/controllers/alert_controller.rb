@@ -1,8 +1,8 @@
-class AlertController < Sinatra::Base
+class AlertController < AppController
 
-  configure do 
-    set :views, 'lib/views'
-  end
+  # configure do 
+  #   set :views, 'lib/views'
+  # end
 
   get '/' do
     @alerts = Alert.all 

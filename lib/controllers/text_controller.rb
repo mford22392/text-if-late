@@ -1,6 +1,11 @@
-# alert = Alert.create(origin: "11+Broadway+NY+NY", destination: "10+West+87th+Street+NY+NY", text_time: "")
-alert = Alert.find(5)
+class TextController < AppController
 
-text_input = GoogleDirectionsController.new.build_text(alert)
+  alert = Alert.find(3)
 
-# Text.new.send_text(text_input)
+  text_input = GoogleDirectionsController.new.build_text(alert)
+
+  def send_text
+    Text.new.send_text(text_input)
+  end
+
+end
