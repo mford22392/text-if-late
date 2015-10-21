@@ -1,5 +1,10 @@
-alert = Alert.create(origin: "11+Broadway+NY+NY", destination: "10+West+87th+Street+NY+NY", text_time: "")
+class TextController < Sinatra::Base
 
-text_input = GoogleDirectionsController.new.build_text(alert)
+  alert = Alert.find(3)
 
-# Text.new.send_text(text_input)
+
+  text_input = GoogleDirectionsController.new.build_text(alert)
+
+  Text.new.send_text(text_input)
+
+end

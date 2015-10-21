@@ -1,4 +1,4 @@
-class GoogleDirectionsController
+class GoogleDirectionsController < Sinatra::Base
 
   def build_text(alert)
     directions_obj = build_data(alert)
