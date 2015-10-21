@@ -1,5 +1,37 @@
-<% @alerts.each do |alert| %>
-  <%=alert.origin%>
-  <%=alert.destination%>
-  <%=alert.text_time%>
-<% end %>
+<head>
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+</style>
+</head>
+
+<table>
+  <tr>
+    <th>Alert #</th>
+    <th>Origin</th>
+    <th>Destination</th>
+    <th>Text Time</th>
+  </tr>
+  <% @alerts.each do |alert| %>
+      <tr>
+        <td>
+          <a href= "/alerts/<%=alert.id %>">
+            Alert <%=alert.id%>
+          </a>
+        </td>
+        <td><%=alert.origin%></td>
+        <td><%=alert.destination%></td>
+        <td><%=alert.text_time%></td>
+      </tr>
+  <% end %>
+</table>
+
+
+
+

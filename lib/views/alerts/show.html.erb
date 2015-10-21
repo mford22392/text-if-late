@@ -1,0 +1,32 @@
+<div class='container' style="padding-top: 20px;">
+  <div class='row'>
+    <div class='span8'>
+      <div class="page-header">
+        <h1>
+          Alert <%= @alert.id %>
+        </h1>
+      </div>
+      <table class='table table-striped'>
+        <tr>
+          <td>Origin</td>
+          <td><%= @alert.origin %></td>
+        </tr>
+        <tr>
+          <td>Destination</td>
+          <td><%= @alert.destination %></td>
+        </tr>
+        <tr>
+          <td>Text Time</td>
+          <td><%= @alert.text_time %></td>
+        </tr>
+      </table>
+      <p><a href="/alerts/<%= @alert.id %>/edit"> Edit </a></p>
+      <p><a href="/"> Return to Index </a></p>
+
+      <form action="/alerts/<%= @alert.id %>/delete" method = 'post'>
+        <input type="submit" value="Delete Alert">
+      </form>
+
+    </div>
+  </div>
+</div>
