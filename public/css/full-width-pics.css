@@ -17,6 +17,14 @@ body {
     -o-background-size: cover;
 }
 
+table, th, td {
+    border-collapse: collapse;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
 /* This section gets a picture for the top */
 .image-bg-fluid-height {
 	background: url('../images/subwaymap.png') no-repeat center center scroll;

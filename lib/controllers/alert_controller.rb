@@ -43,5 +43,14 @@ class AlertController < AppController
     Text.new.send_text(@text_input)
     redirect '/'
   end
+
+  post '/alerts' do
+    alert = Alert.new
+    alert.origin = Geocoder.search(params["alert"]["origin"]).first.data["formatted_address"]
+    alert.destination = Geocoder.search(params["alert"]["destination"]).first.data["formatted_address"]
+    alert.text_time = params["alert"]["text_time"].to_time
+    alert.save
+    redirect "/alerts/#{alert.id}"
+  end
   
 end

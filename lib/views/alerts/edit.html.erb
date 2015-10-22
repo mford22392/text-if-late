@@ -1,23 +1,124 @@
-<form action="/alerts/<%=@alert.id%>" method="post">
-  <label> Origin: </label>
-    <p><input type="text" value = "<%=@alert.origin%>" name = "alert[origin]" /></p>
-  <label> Destination: </label>  
-    <p><input type="text" value = "<%= @alert.destination%>" name = "alert[destination]" /></p>
-  <label> Text Time: </label>  
-    <select name = "alert[text_time]">
-      <option value="6"> 6 </option>
-      <option value="6:30"> 6:30 </option>
-      <option value="7"> 7 </option>
-      <option value="7:30"> 7:30 </option>
-      <option value="8"> 8 </option>
-      <option value="8:30"> 8:30 </option>
-      <option value="9"> 9 </option>
-      <option value="9:30"> 9:30 </option>
-      <option value="10"> 10 </option>
-      <option value="10:30"> 10:30 </option>
-      <option value="11"> 11 </option>
-      <option value="11:30"> 11:30 </option>
-      <option value="12"> 12 </option>
-    </select>
-  <p><input type="submit" value = "Save Changes" />
-</form>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Edit Alert</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/css/full-width-pics.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Alerts Index</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/alerts/new">New Alert</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Full Width Image Header with Logo -->
+    <!-- Image backgrounds are set within the full-width-pics.css file. -->
+    <header class="image-bg-fluid-height">
+        <img class="img-responsive img-center" src="../images/email.png" alt="">
+    </header>
+
+    <!-- Content Section -->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="section-heading">Edit Your Alert</h1>
+                    <p class="lead section-lead">Make any changs you like below and hit submit to save the changes. </p>
+                    <form action="/alerts/<%=@alert.id%>" method="post">
+                      <label> Origin: </label>
+                        <p><input type="text" value = "<%=@alert.origin%>" name = "alert[origin]" /></p>
+                      <label> Destination: </label>  
+                        <p><input type="text" value = "<%= @alert.destination%>" name = "alert[destination]" /></p>
+                      <label> Text Time: </label>  
+                        <select name = "alert[text_time]">
+                          <option value="6"> 6 </option>
+                          <option value="6:30"> 6:30 </option>
+                          <option value="7"> 7 </option>
+                          <option value="7:30"> 7:30 </option>
+                          <option value="8"> 8 </option>
+                          <option value="8:30"> 8:30 </option>
+                          <option value="9"> 9 </option>
+                          <option value="9:30"> 9:30 </option>
+                          <option value="10"> 10 </option>
+                          <option value="10:30"> 10:30 </option>
+                          <option value="11"> 11 </option>
+                          <option value="11:30"> 11:30 </option>
+                          <option value="12"> 12 </option>
+                        </select>
+                      <p><input type="submit" value = "Save Changes" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fixed Height Image Aside -->
+
+    <!-- First image (not header) -->
+    <aside class="image-bg-fixed-height-1"></aside>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </footer>
+
+    <!-- jQuery -->
+    <script src="/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
