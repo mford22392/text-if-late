@@ -4,8 +4,8 @@ class GoogleDirections
 
   def get_url(alert) #pass it an alert object
     keys = YAML.load_file('application.yml')
-    origin = alert.origin
-    destination = alert.destination
+    origin = alert.origin.delete(",", "").gsub(" ", "+")
+    destination = alert.destination.delete(",", "").gsub(" ", "+")
     key = keys['KEYS']
     url="https://maps.googleapis.com/maps/api/directions/xml?origin=#{origin}&destination=#{destination}&mode=transit&key=#{key}"
   end
