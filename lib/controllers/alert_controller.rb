@@ -21,8 +21,8 @@ class AlertController < AppController
 
   post '/alerts/:id' do 
     @alert = Alert.find(params[:id])
-    @alert.origin = Geocoder.search(params["alert"]["origin"]).first.data["formatted_address"]
-    @alert.destination = Geocoder.search(params["alert"]["destination"]).first.data["formatted_address"]
+    @alert.origin = params["alert"]["origin"]
+    @alert.destination = params["alert"]["destination"]
     @alert.text_time = params["alert"]["text_time"].to_time
     @alert.save
     erb :'alerts/show.html'
@@ -30,6 +30,13 @@ class AlertController < AppController
 
   post '/alerts/:id/delete' do
     Alert.destroy(params[:id])
+    redirect '/'
+  end
+
+  get '/alerts/:id/send_text' do
+    @alert = Alert.find(params[:id])
+    @text_input = GoogleDirectionsController.new.build_text(@alert)
+    Text.new.send_text(@text_input)
     redirect '/'
   end
 
