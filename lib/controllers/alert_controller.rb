@@ -33,11 +33,5 @@ class AlertController < AppController
     redirect '/'
   end
 
-  get '/alerts/:id/send_text' do
-    @alert = Alert.find(params[:id])
-    @text_input = GoogleDirectionsController.new.build_text(@alert)
-    Text.new.send_text(@text_input)
-    redirect '/'
-  end
 
 end
