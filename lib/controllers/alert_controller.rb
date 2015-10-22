@@ -4,9 +4,8 @@ class AlertController < AppController
   #   set :views, 'lib/views'
   # end
 
-  get '/' do
-    @alerts = Alert.all 
-    erb :'/alerts/index.html'
+  get '/alerts/new' do
+    erb :'alerts/new.html'
   end
 
   get '/alerts/:id' do
@@ -31,6 +30,15 @@ class AlertController < AppController
   post '/alerts/:id/delete' do
     Alert.destroy(params[:id])
     redirect '/'
+  end
+
+  post '/alerts' do
+    alert = Alerts.new
+    alert.origin = Geocoder.search(params["alert"]["origin"]).first.data["formatted_address"]
+    alert.destination = Geocoder.search(params["alert"]["destination"]).first.data["formatted_address"]
+    alert.text_time = params["alert"]["text_time"].to_time
+    alert.save
+    redirect "/alert/#{alert.id}"
   end
 
 end
