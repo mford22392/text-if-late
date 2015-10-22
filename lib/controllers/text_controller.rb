@@ -1,6 +1,6 @@
 class TextController < AppController
 
-  alert = Alert.find(3)
+  alert = Alert.find(5)
 
   text_input = GoogleDirectionsController.new.build_text(alert)
 
