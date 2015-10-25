@@ -9,4 +9,6 @@ class AppController < Sinatra::Base
     @alerts = Alert.all 
     erb :'/alerts/index.html'
   end
+
+  enable :sessions
 end

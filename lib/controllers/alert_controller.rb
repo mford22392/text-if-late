@@ -5,6 +5,17 @@ class AlertController < AppController
   # end
 
   get '/alerts/new' do
+
+    binding.pry
+
+    if session[:params]
+      @default_values=session[:params]
+      @success_message=session[:success_message]
+      session[:params] = nil
+      session[:success_message] = nil
+    else
+      @default_values=Alert.default_values
+    end
     erb :'alerts/new.html'
   end
 
@@ -45,12 +56,21 @@ class AlertController < AppController
   end
 
   post '/alerts' do
-    alert = Alert.new
-    alert.origin = Geocoder.search(params["alert"]["origin"]).first.data["formatted_address"]
-    alert.destination = Geocoder.search(params["alert"]["destination"]).first.data["formatted_address"]
-    alert.text_time = params["alert"]["text_time"].to_time
-    alert.save
-    redirect "/alerts/#{alert.id}"
+    if Alert.verify_address?(params["alert"]["origin"]) && Alert.verify_address?(params["alert"]["destination"])
+      alert = Alert.new
+      alert.origin = Geocoder.search(params["alert"]["origin"]).first.data["formatted_address"]
+      alert.destination = Geocoder.search(params["alert"]["destination"]).first.data["formatted_address"]
+      alert.text_time = params["alert"]["text_time"].to_time
+      alert.save
+      redirect "/alerts/#{alert.id}"
+    else
+      session[:params]=params
+      session[:success_message]="I'm sorry, your addresses were not specific enough. Please be more exact with your input."
+
+      binding.pry
+
+      redirect '/alerts/new'
+    end
   end
   
 end

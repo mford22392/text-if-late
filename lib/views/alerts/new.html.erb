@@ -9,6 +9,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <% if @success_message %>
+        <div id="success" style="border: 2px solid green;">
+            <%= @success_message %>
+        </div>
+    <% end %>
+
     <title>Create A New ALert</title>
 
     <!-- Bootstrap Core CSS -->
@@ -86,9 +92,9 @@
                     <div class="col-lg-12">
                         <h1 class="section-heading">Your Destinations</h1>
                         <p class="lead section-lead">Please enter your start location for this alert (no apartment number please!)</p>
-                        <input type='text' name='alert[origin]'>
+                        <input type='text' name='alert[origin]', value="<%= @default_values["alert"]["origin"] %>">
                         <p class="lead section-lead">Please enter your end location for this alert (no apartment number please!)</p>
-                        <input type='text' name='alert[destination]'>
+                        <input type='text' name='alert[destination]', value="<%= @default_values["alert"]["destination"] %>">
                         <p class="section-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
                     </div>
                 </div>
