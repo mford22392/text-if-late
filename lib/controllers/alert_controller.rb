@@ -5,8 +5,9 @@ class AlertController < AppController
   # end
 
   get '/alerts/new' do
+    binding.pry
     if session[:success_message]
-      @success_message=session[:success_message]
+      @success_message = session[:success_message]
       session[:success_message] = nil
     end
     erb :'alerts/new.html'
@@ -57,8 +58,9 @@ class AlertController < AppController
       alert.save
       redirect "/alerts/#{alert.id}"
     else
-      session[:success_message]="I'm sorry, your addresses were not specific enough. Please be more exact with your input."
-      redirect '/alerts/new'
+      session[:success_message] = "I'm sorry, your addresses were not specific enough. Please be more exact with your input."
+      binding.pry
+      redirect :'/alerts/new'
     end
   end
   

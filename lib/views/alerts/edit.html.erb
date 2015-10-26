@@ -65,6 +65,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
+                    <% if @success_message %>
+                        <div id="success" style="border: 2px solid green;">
+                             <%= @success_message %>
+                        </div>
+                    <% end %>
                     <h1 class="section-heading">Edit Your Alert</h1>
                     <p class="lead section-lead">Make any changs you like below and hit submit to save the changes. </p>
                     <form action="/alerts/<%=@alert.id%>" method="post">
