@@ -27,7 +27,7 @@ class AlertController < AppController
     @alert = Alert.find(params[:id])
     @alert.origin = params["alert"]["origin"]
     @alert.destination = params["alert"]["destination"]
-    @alert.text_time = params["alert"]["text_time"].to_time
+    @alert.text_time = Time.new(params["alert"]["text_time"]).change(:offset => "EST")
     @alert.save
     erb :'alerts/show.html'
   end
@@ -48,7 +48,7 @@ class AlertController < AppController
     alert = Alert.new
     alert.origin = Geocoder.search(params["alert"]["origin"]).first.data["formatted_address"]
     alert.destination = Geocoder.search(params["alert"]["destination"]).first.data["formatted_address"]
-    alert.text_time = params["alert"]["text_time"].to_time
+    alert.text_time = Time.new(params["alert"]["text_time"]).change(:offset => "EST")
     alert.save
     redirect "/alerts/#{alert.id}"
   end

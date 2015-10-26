@@ -66,7 +66,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="section-heading">Alert <%= @alert.id %></h1>
-                    <p class="lead section-lead">Here is all the information for alert <%= @alert.id %>!</p>
+                    <p class="lead section-lead">Here is all the information for Alert <%= @alert.id %>!</p>
                           <table class="table-striped">
                             <tr>
                               <td>Origin</td>
@@ -78,7 +78,7 @@
                             </tr>
                             <tr>
                               <td>Text Time</td>
-                              <td><%= @alert.text_time %></td>
+                              <td><%= @alert.text_time.strftime "%H:%M"%></td>
                             </tr>
                           </table>
                           <p><a href="/alerts/<%= @alert.id %>/edit"> Edit </a></p>
@@ -95,70 +95,11 @@
         </div>
     </section>
 
-    <!-- Fixed Height Image Aside -->
-
-    <!-- First image (not header) -->
-    <aside class="image-bg-fixed-height-1"></aside>
-
-    <!-- Destinations -->
-    <form action='/alerts' method='POST'>
-        <section>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="section-heading">Your Destinations</h1>
-                        <p class="lead section-lead">Please enter your start location for this alert (no apartment number please!)</p>
-                        <input type='text' name='alert[origin]'>
-                        <p class="lead section-lead">Please enter your end location for this alert (no apartment number please!)</p>
-                        <input type='text' name='alert[destination]'>
-                        <p class="section-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
-                    </div>
-                </div>
-                <!-- /.row -->
-            </div>
-            <!-- /.container -->
-        </section>
-
-    <!-- Second image (not header)-->
-    <aside class="image-bg-fixed-height-2"></aside>
-
-    <!-- Set time section -->
-        <section>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="section-heading">Set Alert Time</h1>
-                        <p class="lead section-lead">Please use the drop down menu below to set your alert time. </p>
-                            <select name = "alert[text_time]">
-                              <option value="6"> 6 </option>
-                              <option value="6:30"> 6:30 </option>
-                              <option value="7"> 7 </option>
-                              <option value="7:30"> 7:30 </option>
-                              <option value="8"> 8 </option>
-                              <option value="8:30"> 8:30 </option>
-                              <option value="9"> 9 </option>
-                              <option value="9:30"> 9:30 </option>
-                              <option value="10"> 10 </option>
-                              <option value="10:30"> 10:30 </option>
-                              <option value="11"> 11 </option>
-                              <option value="11:30"> 11:30 </option>
-                              <option value="12"> 12 </option>
-                            </select>
-                        <p class="section-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, suscipit, rerum quos facilis repellat architecto commodi officia atque nemo facere eum non illo voluptatem quae delectus odit vel itaque amet.</p>
-                        <input type='submit' name='Submit'>
-                    </div>
-                </div>
-                <!-- /.row -->
-            </div>
-            <!-- /.container -->
-        </section>
-    </form>
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
                 </div>
             </div>
             <!-- /.row -->
