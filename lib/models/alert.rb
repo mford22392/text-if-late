@@ -6,7 +6,7 @@ class Alert < ActiveRecord::Base
   # text_time
 
   def self.verify_address?(address)
-    Geocoder.search(address).length == 1
+    Geocoder.search(address).length >= 1
   end
 
   def origin=(origin)
