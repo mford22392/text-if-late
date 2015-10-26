@@ -4,9 +4,9 @@ class GoogleDirections
 
   def get_url(alert) #pass it an alert object
     keys = YAML.load_file('application.yml')
-    origin = alert.origin.delete(",", "").gsub(" ", "+")
-    destination = alert.destination.delete(",", "").gsub(" ", "+")
-    key = keys['KEYS']
+    origin = alert.origin.delete(",").delete("#").gsub(" ", "+")
+    destination = alert.destination.delete(",").delete("#").gsub(" ", "+")
+    key = keys['KEY']
     url="https://maps.googleapis.com/maps/api/directions/xml?origin=#{origin}&destination=#{destination}&mode=transit&key=#{key}"
   end
 
@@ -21,6 +21,7 @@ class GoogleDirections
   end
 
   def get_trip_time
+
     depart_time = doc.css('departure_time text').pop.text
     arrive_time = doc.css('arrival_time text').pop.text
     #Grabs LAST arrival and LAST depatrure time from XML.
