@@ -19,12 +19,6 @@ class Alert < ActiveRecord::Base
     super
   end
 
-  def self.default_values
-    {"alert"=>
-    {"origin"=>"Origin",
-    "destination"=>"Destination",
-    "text_time"=>"6"}}
-  end
 
   # def initialize(origin: origin, destination: destination, text_time: text_time)
   #   @origin = Geocoder.search(origin).first.data["formatted_address"].gsub(" ", "+")
