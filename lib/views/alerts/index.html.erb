@@ -83,7 +83,7 @@
                             </td>
                             <td><%=alert.origin%></td>
                             <td><%=alert.destination%></td>
-                            <td><%=alert.text_time.strftime "%H:%M"%></td>
+                            <td><%=alert.text_time.localtime.strftime "%H:%M"%></td>
                           </tr>
                       <% end %>
                     </table>

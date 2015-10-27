@@ -78,7 +78,7 @@
                             </tr>
                             <tr>
                               <td>Text Time</td>
-                              <td><%= @alert.text_time.strftime "%H:%M"%></td>
+                              <td><%= @alert.text_time.localtime.strftime "%H:%M"%></td>
                             </tr>
                           </table>
                           <p><a href="/alerts/<%= @alert.id %>/edit"> Edit </a></p>
