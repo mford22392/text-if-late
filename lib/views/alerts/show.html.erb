@@ -80,6 +80,10 @@
                               <td>Text Time</td>
                               <td><%= @alert.text_time.localtime.strftime "%H:%M"%></td>
                             </tr>
+                            <tr>
+                              <td>Phone Number</td>
+                              <td><%= @alert.phone_number%></td>
+                            </tr>
                           </table>
                           <p><a href="/alerts/<%= @alert.id %>/edit"> Edit </a></p>
                           <p><a href="/"> Return to Index </a></p>

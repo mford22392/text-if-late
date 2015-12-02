@@ -12,6 +12,21 @@ class AlertController < AppController
     erb :'alerts/new.html'
   end
 
+  post '/alerts' do
+    if Alert.verify_address?(params["alert"]["origin"]) && Alert.verify_address?(params["alert"]["destination"])
+      alert = Alert.new
+      alert.origin = Geocoder.search(params["alert"]["origin"]).first.data["formatted_address"]
+      alert.destination = Geocoder.search(params["alert"]["destination"]).first.data["formatted_address"]
+      alert.text_time = Time.parse(params["alert"]["text_time"]).localtime
+      alert.phone_number = params["alert"]["phone_number"]
+      alert.save
+      redirect "/alerts/#{alert.id}"
+    else
+      session[:success_message] = "I'm sorry, your addresses were not specific enough. Please be more exact with your input."
+      redirect :'/alerts/new'
+    end
+  end
+
   get '/' do
    @alerts = Alert.all 
    erb :'/alerts/index.html'
@@ -37,6 +52,7 @@ class AlertController < AppController
       @alert.origin = params["alert"]["origin"]
       @alert.destination = params["alert"]["destination"]
       @alert.text_time = Time.parse(params["alert"]["text_time"]).localtime
+      @alert.phone_number = params["alert"]["phone_number"]
       @alert.save
       erb :'alerts/show.html'
     else
@@ -53,22 +69,11 @@ class AlertController < AppController
   get '/alerts/:id/send_text' do
     @alert = Alert.find(params[:id])
     @text_input = GoogleDirectionsController.new.build_text(@alert)
-    Text.new.send_text(@text_input)
+    @phone_number = @alert.phone_number
+    Text.new.send_text(@text_input, @phone_number)
     redirect '/'
   end
 
-  post '/alerts' do
-    if Alert.verify_address?(params["alert"]["origin"]) && Alert.verify_address?(params["alert"]["destination"])
-      alert = Alert.new
-      alert.origin = Geocoder.search(params["alert"]["origin"]).first.data["formatted_address"]
-      alert.destination = Geocoder.search(params["alert"]["destination"]).first.data["formatted_address"]
-      alert.text_time = Time.parse(params["alert"]["text_time"]).localtime
-      alert.save
-      redirect "/alerts/#{alert.id}"
-    else
-      session[:success_message] = "I'm sorry, your addresses were not specific enough. Please be more exact with your input."
-      redirect :'/alerts/new'
-    end
-  end
+
   
 end

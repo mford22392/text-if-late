@@ -8,17 +8,17 @@ class Text
     @auth_token = @keys['TW_AUTH_TOKEN'] 
   end
 
-  def form_text(text_input)
+  def form_text(text_input, phone_number)
     @client = Twilio::REST::Client.new @account_sid, @auth_token 
     @client.account.messages.create({
       :from => @keys['TW_FROM'], 
-      :to => @keys['TW_TO'], 
+      :to => phone_number, 
       :body => text_input,  
     })
   end
 
-  def send_text(text_input)
+  def send_text(text_input, phone_number)
     get_keys
-    form_text(text_input)
+    form_text(text_input, phone_number)
   end
 end
