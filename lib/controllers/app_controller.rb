@@ -4,7 +4,6 @@ class AppController < Sinatra::Base
     set :views, 'lib/views'
     enable :sessions
     set :session_secret, "anhthing you want" 
-    # set :public_folder, 'public'
   end
 
   get '/' do

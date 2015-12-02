@@ -35,6 +35,8 @@ class GoogleDirections
     @arrive_station = doc.css('arrival_stop').text.strip.split("\n").first
   end
 
+  
+
 end
 
 

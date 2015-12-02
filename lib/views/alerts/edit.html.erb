@@ -71,7 +71,7 @@
                         </div>
                     <% end %>
                     <h1 class="section-heading">Edit Your Alert</h1>
-                    <p class="lead section-lead">Make any changs you like below and hit submit to save the changes. </p>
+                    <p class="lead section-lead">Make any changes you like below and then hit 'save changes'. </p>
                     <form action="/alerts/<%=@alert.id%>" method="post">
                       <label> Origin: </label>
                         <p><input type="text" value = "<%=@alert.origin%>" name = "alert[origin]" /></p>
@@ -92,9 +92,9 @@
                           <option value="11:00"> 11:00 </option>
                           <option value="11:30"> 11:30 </option>
                           <option value="12:00"> 12:00 </option>
-                        </select>
-                       <p class="lead section-lead">Please enter your phone number:</p>
-                        <input type='text' value= " <%=@alert.phone_number %>" name='alert[phone_number]'> 
+                        </select><br>
+                       <label>Phone Number:</label>
+                        <p><input type='text' value= " <%=@alert.phone_number %>" name='alert[phone_number]'> </p>
                       <p><input type="submit" value = "Save Changes" />
                     </form>
                 </div>

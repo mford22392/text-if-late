@@ -1,4 +1,4 @@
-class UsertController < AppController
+class UserController < AppController
 
   configure do 
     set :views, 'lib/views'

@@ -1,15 +1,16 @@
 class AlertController < AppController
 
-  # configure do 
-  #   set :views, 'lib/views'
-  # end
-
   get '/alerts/new' do
     if session[:success_message]
       @success_message = session[:success_message]
       session[:success_message] = nil
     end
     erb :'alerts/new.html'
+  end
+  
+  get '/' do
+   @alerts = Alert.all 
+   erb :'/alerts/index.html'
   end
 
   post '/alerts' do
@@ -27,23 +28,9 @@ class AlertController < AppController
     end
   end
 
-  get '/' do
-   @alerts = Alert.all 
-   erb :'/alerts/index.html'
-  end
-
   get '/alerts/:id' do
     @alert = Alert.find(params[:id])
     erb :'/alerts/show.html'
-  end
-
-  get '/alerts/:id/edit' do
-    if session[:success_message]
-      @success_message = session[:success_message]
-      session[:success_message] = nil
-    end
-    @alert = Alert.find(params[:id])
-    erb :'alerts/edit.html'
   end
 
   post '/alerts/:id' do 
@@ -61,6 +48,15 @@ class AlertController < AppController
     end
   end
 
+  get '/alerts/:id/edit' do
+    if session[:success_message]
+      @success_message = session[:success_message]
+      session[:success_message] = nil
+    end
+    @alert = Alert.find(params[:id])
+    erb :'alerts/edit.html'
+  end
+
   post '/alerts/:id/delete' do
     Alert.destroy(params[:id])
     redirect '/'
@@ -68,7 +64,7 @@ class AlertController < AppController
 
   get '/alerts/:id/send_text' do
     @alert = Alert.find(params[:id])
-    @text_input = GoogleDirectionsController.new.build_text(@alert)
+    @text_input = Text.new.build_text(@alert)
     @phone_number = @alert.phone_number
     Text.new.send_text(@text_input, @phone_number)
     redirect '/'
