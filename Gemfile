@@ -12,4 +12,10 @@ gem 'nokogiri'
 gem 'twilio-ruby'
 gem 'require_all'
 gem 'geocoder'
-gem 'pg'
+
+group :development, :test do
+  gem 'sqlite3'
+end
+group :production do
+  gem 'pg'
+end
